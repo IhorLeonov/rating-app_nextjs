@@ -11,17 +11,17 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export async function getMenu(firstCategory: number): Promise<MenuItem[]> {
-  const res = await fetch(API.topPage.find, {
-    method: "POST",
-    body: JSON.stringify({
-      firstCategory,
-    }),
-    headers: new Headers({ "content-type": "application/json" }),
-  });
+// export async function getMenu(firstCategory: number): Promise<MenuItem[]> {
+//   const res = await fetch(API.topPage.find, {
+//     method: "POST",
+//     body: JSON.stringify({
+//       firstCategory,
+//     }),
+//     headers: new Headers({ "content-type": "application/json" }),
+//   });
 
-  return res.json();
-}
+//   return res.json();
+// }
 
 export default async function Home() {
   const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
