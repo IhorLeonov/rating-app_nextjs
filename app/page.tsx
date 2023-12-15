@@ -27,6 +27,7 @@ export default async function Home() {
   const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
     firstCategory: 0,
   });
+  console.log(menu);
 
   return (
     <>
