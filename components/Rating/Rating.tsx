@@ -24,6 +24,7 @@ export const Rating = ({
     const updatedArr = ratingArr.map((r: JSX.Element, idx: number) => {
       return (
         <span
+          key={idx}
           className={cn(s.star, className, {
             [s.filled]: idx < currentRating,
             [s.editable]: isEditable,

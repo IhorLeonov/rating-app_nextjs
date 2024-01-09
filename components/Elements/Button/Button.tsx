@@ -1,7 +1,7 @@
 import s from "./Button.module.css";
 import { ButtonProps } from "./Button.props";
 import cn from "classnames";
-import ArrowSvg from "../../public/arrow.svg";
+import ArrowSvg from "../../../public/arrow.svg";
 
 export const Button = ({
   children,

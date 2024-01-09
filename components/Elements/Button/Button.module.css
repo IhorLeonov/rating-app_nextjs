@@ -19,6 +19,7 @@
 .primary:hover,
 .primary:focus {
   background-color: var(--primary-hover);
+  color: var(--black);
 }
 
 .ghost {
@@ -47,4 +48,9 @@
 .ghost:hover svg,
 .ghost:focus svg {
   fill: var(--white);
+}
+
+.primary:hover svg,
+.primary:focus svg {
+  fill: var(--black);
 }
