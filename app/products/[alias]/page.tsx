@@ -1,5 +1,5 @@
-import { getMenu } from "@/app/api/menu";
-import { getPage } from "@/app/api/page";
+import { getMenu } from "@/app/api/menu-api";
+import { getPage } from "@/app/api/page-api";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 

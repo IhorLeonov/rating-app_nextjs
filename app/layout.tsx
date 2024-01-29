@@ -7,7 +7,7 @@ import { Footer } from "./layout/Footer/Footer";
 import s from "./layout.module.css";
 import cn from "classnames";
 import { AppContextProvider, IAppContext } from "./context/app.context";
-import { getMenu } from "./api/menu";
+import { getMenu } from "./api/menu-api";
 
 const inter = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
