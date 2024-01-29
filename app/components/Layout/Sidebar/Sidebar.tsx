@@ -1,5 +1,5 @@
 "use client";
-import { Menu } from "../../components/Menu/Menu";
+import { Menu } from "../../Menu/Menu";
 import { SidebarProps } from "./Sidebar.props";
 // import s from "./Sidebar.module.css";
 import cn from "classnames";

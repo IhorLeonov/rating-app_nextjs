@@ -1,13 +1,11 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
-import { Header } from "./layout/Header/Header";
-import { Sidebar } from "./layout/Sidebar/Sidebar";
-import { Footer } from "./layout/Footer/Footer";
+import { AppContextProvider } from "./context/app.context";
+import { Header, Sidebar, Footer } from "./components/Layout";
+import { getMenu } from "./api/menu-api";
 import s from "./layout.module.css";
 import cn from "classnames";
-import { AppContextProvider, IAppContext } from "./context/app.context";
-import { getMenu } from "./api/menu-api";
+import "./globals.css";
 
 const inter = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
