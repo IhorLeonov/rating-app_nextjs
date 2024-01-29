@@ -1,0 +1,9 @@
+.logo {
+  cursor: pointer;
+}
+
+.sidebar {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+}

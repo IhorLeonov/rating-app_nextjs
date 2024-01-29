@@ -1,8 +1,8 @@
-import { Htag, Button, P, Tag, Rating } from "@/components";
-import { Metadata } from "next";
-
-import { Menu } from "@/components/Menu/Menu";
+// import { Htag, Button, P, Tag, Rating } from "@/components";
 // import PageProducts from "./products/[alias]/page";
+// import { MenuItem } from "@/interfaces/menu.interface";
+// import axios from "axios";
+import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   // ...
@@ -11,12 +11,25 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
+// Page Router ()
+// export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+//   const firstCategory = 0;
+//   const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+//     firstCategory,
+//   });
+//   return {
+//     props: {
+//       menu,
+//       firstCategory,
+//     },
+//   };
+// };
+
+export default async function Home() {
   return (
     <>
       {/* <PageProducts /> */}
       Main Page
-      <Menu />
       {/* <Htag tag="h1">Hello</Htag> */}
       {/* <Button appearance="primary" arrow="right">
         Кнопка

@@ -1,5 +1,5 @@
-import { getMenu } from "@/api/menu";
-import { getPage } from "@/api/page";
+import { getMenu } from "@/app/api/menu";
+import { getPage } from "@/app/api/page";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -16,9 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const menu = await getMenu(0);
-  return menu.flatMap((item) =>
-    item.pages.map((page) => ({ alias: page.alias }))
-  );
+  return menu.flatMap((item) => item.pages.map((page) => ({ alias: page.alias })));
 }
 
 export default async function PageProducts({ params }: PageProductsParams) {
