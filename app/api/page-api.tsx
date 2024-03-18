@@ -3,7 +3,7 @@ import { TopPageModel } from "@/interfaces/page.interface";
 
 export async function getPage(alias: string): Promise<TopPageModel | null> {
   const res = await fetch(API.topPage.byAlias + alias, {
-    next: { revalidate: 10 }, // кд для обновления данных с сервера
+    next: { revalidate: 10 },
   });
   console.log("revalidating getPage");
 
