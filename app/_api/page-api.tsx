@@ -1,12 +1,12 @@
-import { API } from "@/app/api/api";
+import { API } from "@/app/_api/api";
 import { TopPageModel } from "@/interfaces/page.interface";
 
 export async function getPage(alias: string): Promise<TopPageModel | null> {
-  await new Promise((res) =>
-    setTimeout(() => {
-      res("");
-    }, 1000)
-  );
+  // await new Promise((res) =>
+  //   setTimeout(() => {
+  //     res("");
+  //   }, 500)
+  // );
 
   const res = await fetch(API.topPage.byAlias + alias, {
     next: { revalidate: 10 },

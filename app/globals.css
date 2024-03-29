@@ -25,8 +25,8 @@ a {
   --gray-light: #ebebeb;
   --gray-dark: #787d85;
   --white: white;
-  /* --primary: #060412; */
-  --primary: #7653fc;
+  --primary: #060412;
+  /* --primary: #7653fc; */
   --primary-hover: rgb(196, 229, 65);
 
   --red: #fc836d;

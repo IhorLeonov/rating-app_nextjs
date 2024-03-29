@@ -1,10 +1,11 @@
-import { getMenu } from "@/app/api/menu-api";
-import { getPage } from "@/app/api/page-api";
+import { getMenu } from "@/app/_api/menu-api";
+import { getPage } from "@/app/_api/page-api";
+import { firstLevelMenu } from "@/app/_lib/helpers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface PageProductsParams {
-  params: { alias: string };
+  params: { alias: string; type: string };
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -15,7 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const menu = await getMenu(0);
+  const firstCategory = 0;
+  const menu = await getMenu(firstCategory);
+
   return menu.flatMap((item) => item.pages.map((page) => ({ alias: page.alias })));
 }
 

@@ -1,47 +1,28 @@
-import { AppContext } from "@/app/context/app.context";
+import { AppContext } from "@/app/_context/app.context";
 import { FirstLevelMenuItem, PageItem } from "@/interfaces/menu.interface";
 import { useContext } from "react";
+import { usePathname } from "next/navigation";
+import { firstLevelMenu } from "@/app/_lib/helpers";
+
 import cn from "classnames";
 import s from "./Menu.module.css";
-
-import CoursesIcon from "./icons/courses.svg";
-import BooksIcon from "./icons/books.svg";
-import ProductsIcon from "./icons/products.svg";
-import ServicesIcon from "./icons/services.svg";
-import { TopLevelCategory } from "@/interfaces/page.interface";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  {
-    route: "courses",
-    name: "Courses",
-    icon: <CoursesIcon />,
-    id: TopLevelCategory.Courses,
-  },
-  {
-    route: "books",
-    name: "Books",
-    icon: <BooksIcon />,
-    id: TopLevelCategory.Books,
-  },
-  {
-    route: "products",
-    name: "Products",
-    icon: <ProductsIcon />,
-    id: TopLevelCategory.Products,
-  },
-  {
-    route: "services",
-    name: "Services",
-    icon: <ServicesIcon />,
-    id: TopLevelCategory.Services,
-  },
-];
 
 export function Menu() {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
   const pathName = usePathname();
+
+  const openSecondLevel = (secondCategory: string) => {
+    setMenu &&
+      setMenu(
+        menu.map((m) => {
+          if (m._id.secondCategory === secondCategory) {
+            m.isOpened = !m.isOpened;
+          }
+          return m;
+        })
+      );
+  };
 
   const buildFirstLevel = () => {
     return (
@@ -70,14 +51,17 @@ export function Menu() {
       <div className={s.secondBlock}>
         {menu.map((m) => {
           if (m.pages.map((p) => p.alias).includes(pathName.split("/")[2])) {
-            console.log(m.pages.map((p) => p.alias));
-
             m.isOpened = true;
           }
 
           return (
             <div key={m._id.secondCategory}>
-              <div className={s.secondLevel}>{m._id.secondCategory}</div>
+              <div
+                className={s.secondLevel}
+                onClick={() => openSecondLevel(m._id.secondCategory)}
+              >
+                {m._id.secondCategory}
+              </div>
               <div
                 className={cn(s.secondLevelBlock, {
                   [s.secondLevelBlockOpened]: m.isOpened,

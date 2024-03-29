@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
-import { AppContextProvider } from "./context/app.context";
-import { Header, Sidebar, Footer } from "./components/Layout";
-import { getMenu } from "./api/menu-api";
+import { AppContextProvider } from "./_context/app.context";
+import { Header, Sidebar, Footer } from "./_components/Layout";
+import { getMenu } from "./_api/menu-api";
 import s from "./layout.module.css";
 import cn from "classnames";
 import "./globals.css";

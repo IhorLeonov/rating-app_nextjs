@@ -1,4 +1,4 @@
-import { API } from "@/app/api/api";
+import { API } from "@/app/_api/api";
 import { MenuItem } from "@/interfaces/menu.interface";
 
 export async function getMenu(firstCategory: number): Promise<MenuItem[]> {

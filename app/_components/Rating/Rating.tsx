@@ -3,7 +3,7 @@ import { useEffect, useState, KeyboardEvent } from "react";
 import { RatingProps } from "./Rating.props";
 import s from "./Rating.module.css";
 import cn from "classnames";
-import StarSvg from "../../public/star.svg";
+import StarSvg from "../../_lib/icons/star.svg";
 
 export const Rating = ({
   isEditable = false,
@@ -35,7 +35,9 @@ export const Rating = ({
         >
           <StarSvg
             tabIndex={isEditable ? 0 : -1}
-            onKeyDown={(e: KeyboardEvent<SVGAElement>) => isEditable && handleSpace(idx + 1, e)}
+            onKeyDown={(e: KeyboardEvent<SVGAElement>) =>
+              isEditable && handleSpace(idx + 1, e)
+            }
           />
         </span>
       );
