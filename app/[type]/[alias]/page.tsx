@@ -22,7 +22,9 @@ export async function generateStaticParams() {
   const firstCategory = 0;
   const menu = await getMenu(firstCategory);
 
-  return menu.flatMap((item) => item.pages.map((page) => ({ alias: page.alias })));
+  return menu.flatMap((item) =>
+    item.pages.map((page) => ({ alias: page.alias }))
+  );
 }
 
 export default async function TopPage({ params }: TopPageParams) {

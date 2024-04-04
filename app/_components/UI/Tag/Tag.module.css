@@ -1,20 +1,17 @@
 .tag {
   display: inline-block;
+  padding: 5px 10px;
 
   margin-right: 5px;
   border-radius: 20px;
 }
 
 .s {
-  padding: 5px 10px;
-
   font-size: 12px;
   line-height: 12px;
 }
 
 .m {
-  padding: 5px 10px;
-
   font-size: 14px;
   line-height: 14px;
 }
