@@ -27,7 +27,7 @@ a {
   --white: white;
   --primary: #060412;
   /* --primary: #7653fc; */
-  --primary-hover: rgb(196, 229, 65);
+  --accent: rgb(196, 229, 65);
 
   --red: #fc836d;
   --green: #1dc37e;

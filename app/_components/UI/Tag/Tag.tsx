@@ -20,6 +20,7 @@ export const Tag = ({
         [s.grey]: color === "grey",
         [s.green]: color === "green",
         [s.primary]: color === "primary",
+        [s.accent]: color === "accent",
       })}
       {...props}
     >

@@ -1,7 +1,10 @@
+"use client";
+
 import { TopLevelCategory, TopPageModel } from "@/interfaces/page.interface";
 import { ProductModel } from "@/interfaces/product.interface";
-import { Htag, Tag, HhData } from "../../index";
+import { Htag, Tag, HhData, Advantages, Sort } from "../index";
 import s from "./TopPageComponent.module.css";
+import { SortEnum } from "../Sort/Sort.props";
 
 export interface TopPageComponentProps {
   firstCategory: TopLevelCategory;
@@ -23,7 +26,7 @@ export default function TopPageComponent({
             {products.length}
           </Tag>
         )}
-        <span>Сортировка</span>
+        <Sort sort={SortEnum.Rating} setSort={() => {}} />
       </div>
 
       <div>
@@ -40,6 +43,27 @@ export default function TopPageComponent({
       {firstCategory === TopLevelCategory.Courses && page.hh && (
         <HhData {...page.hh} />
       )}
+
+      {page.advantages && page.advantages.length > 0 && (
+        <>
+          <Htag tag="h2">Преимущества</Htag>
+          <Advantages advantages={page.advantages} />
+        </>
+      )}
+      {page.seoText && (
+        <div
+          className={s.seo}
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        />
+      )}
+
+      <Htag tag="h2">Получаемые навыки</Htag>
+
+      {page.tags.map((t) => (
+        <Tag key={t} color="accent">
+          {t}
+        </Tag>
+      ))}
     </div>
   );
 }
