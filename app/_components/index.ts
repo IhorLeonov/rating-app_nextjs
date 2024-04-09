@@ -8,3 +8,4 @@ export * from "./HhData/HhData";
 export * from "./Advantages/Advantages";
 export * from "./TopPageComponent/TopPageComponent";
 export * from "./Sort/Sort";
+export * from "./UI/Input/Input";
