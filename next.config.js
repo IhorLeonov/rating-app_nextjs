@@ -1,7 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "old-images.hb.ru-msk.vkcs.cloud",
+        port: "",
+      },
+    ],
+  },
   webpack: (config) => {
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg")
+    );
     config.module.rules.push(
       {
         ...fileLoaderRule,

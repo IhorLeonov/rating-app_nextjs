@@ -1,48 +1,38 @@
-// import { SearchProps } from "./Search.props";
-// import styles from "./Search.module.css";
-// import GlassIcon from "./glass.svg";
-// import cn from "classnames";
-// import { Input } from "../Input/Input";
-// import { Button } from "../Button/Button";
-// import { useState, KeyboardEvent } from "react";
-// import { useRouter } from "next/router";
+"use client";
 
-// export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
-//   const [search, setSearch] = useState<string>("");
-//   const router = useRouter();
+import { SearchProps } from "./Search.props";
+import s from "./Search.module.css";
+import cn from "classnames";
+import { Input, Button } from "../";
+import { useState, KeyboardEvent } from "react";
+import GlassIcon from "../../_lib/icons/glass.svg";
+import { useRouter } from "next/navigation";
 
-//   const goToSearch = () => {
-//     router.push({
-//       pathname: "/search",
-//       query: {
-//         q: search,
-//       },
-//     });
-//   };
+export default function Search({ className, ...props }: SearchProps) {
+  const [search, setSearch] = useState<string>("");
+  const router = useRouter();
 
-//   const handleKeyDown = (e: KeyboardEvent) => {
-//     if (e.key == "Enter") {
-//       goToSearch();
-//     }
-//   };
+  const goToSearch = () => {
+    router.push(`/search?q=${search}`);
+  };
 
-//   return (
-//     <form className={cn(className, styles.search)} {...props} role="search">
-//       <Input
-//         className={styles.input}
-//         placeholder="Поиск..."
-//         value={search}
-//         onChange={(e) => setSearch(e.target.value)}
-//         onKeyDown={handleKeyDown}
-//       />
-//       <Button
-//         appearance="primary"
-//         className={styles.button}
-//         onClick={goToSearch}
-//         aria-label="Искать по сайту"
-//       >
-//         <GlassIcon />
-//       </Button>
-//     </form>
-//   );
-// };
+  const handleKeyDown = (e: KeyboardEvent) => {
+    e.key === "Enter" && goToSearch();
+  };
+
+  return (
+    <div className={cn(className, s.search)} {...props}>
+      <Input
+        className={s.input}
+        placeholder="Поиск..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
+
+      <Button appearance="primary" className={s.button} onClick={goToSearch}>
+        <GlassIcon />
+      </Button>
+    </div>
+  );
+}

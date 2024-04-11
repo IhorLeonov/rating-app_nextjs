@@ -1,3 +1,11 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+
 export default function PageSearch() {
-  return <div>Page Search</div>;
+  const searchParams = useSearchParams();
+
+  const paramQ = searchParams.get("q");
+
+  return <div>Page Search. Query: {paramQ}</div>;
 }

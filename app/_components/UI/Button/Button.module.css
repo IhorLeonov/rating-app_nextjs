@@ -18,7 +18,8 @@
 
 .primary:hover,
 .primary:focus {
-  background-color: var(--primary-hover);
+  /* background-color: var(--primary-hover); */
+  background-color: var(--accent);
   color: var(--black);
 }
 

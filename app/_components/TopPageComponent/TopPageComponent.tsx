@@ -2,7 +2,7 @@
 
 import { TopLevelCategory, TopPageModel } from "@/interfaces/page.interface";
 import { ProductModel } from "@/interfaces/product.interface";
-import { Htag, Tag, HhData, Advantages, Sort } from "../index";
+import { Htag, Tag, HhData, Advantages, Sort, Product } from "../index";
 import s from "./TopPageComponent.module.css";
 import { SortEnum } from "../Sort/Sort.props";
 import { useReducer } from "react";
@@ -45,7 +45,7 @@ export default function TopPageComponent({
 
       <div>
         {sortedProducts &&
-          sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
+          sortedProducts.map((p) => <Product key={p._id} product={p} />)}
       </div>
 
       <div className={s.hhTitle}>
