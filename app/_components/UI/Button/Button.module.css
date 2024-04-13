@@ -31,8 +31,9 @@
 
 .ghost:hover,
 .ghost:focus {
-  color: var(--white);
-  background-color: var(--primary);
+  /* color: var(--white); */
+  /* background-color: var(--primary); */
+  background-color: var(--accent);
 }
 
 .arrow {
@@ -45,9 +46,12 @@
   transition: all 0.2s;
 }
 
-.primary svg,
+/* .primary svg,
 .ghost:hover svg,
 .ghost:focus svg {
+  fill: var(--white);
+} */
+.primary svg {
   fill: var(--white);
 }
 

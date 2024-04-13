@@ -4,6 +4,7 @@ export * from "./UI/P/P";
 export * from "./UI/Tag/Tag";
 export * from "./UI/Input/Input";
 export * from "./UI/TextArea/TextArea";
+export * from "./UI/Divider/Divider";
 
 export * from "./Rating/Rating";
 export * from "./Card/Card";
