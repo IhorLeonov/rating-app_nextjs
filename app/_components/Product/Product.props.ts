@@ -1,7 +1,14 @@
 import { ProductModel } from "@/interfaces/product.interface";
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import {
+  DetailedHTMLProps,
+  Dispatch,
+  HTMLAttributes,
+  SetStateAction,
+} from "react";
 
 export interface ProductProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   product: ProductModel;
+  isReviewOpened: boolean;
+  setIsReviewOpened: Dispatch<SetStateAction<boolean>>;
 }

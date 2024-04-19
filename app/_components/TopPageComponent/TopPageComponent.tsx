@@ -1,12 +1,14 @@
 "use client";
 
+import { useReducer, useState } from "react";
+import { Htag, Tag, HhData, Advantages, Sort, Product } from "../index";
+
 import { TopLevelCategory, TopPageModel } from "@/interfaces/page.interface";
 import { ProductModel } from "@/interfaces/product.interface";
-import { Htag, Tag, HhData, Advantages, Sort, Product } from "../index";
-import s from "./TopPageComponent.module.css";
 import { SortEnum } from "../Sort/Sort.props";
-import { useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
+
+import s from "./TopPageComponent.module.css";
 
 export interface TopPageComponentProps {
   firstCategory: TopLevelCategory;
@@ -27,6 +29,8 @@ export default function TopPageComponent({
     }
   );
 
+  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };
@@ -45,7 +49,14 @@ export default function TopPageComponent({
 
       <div>
         {sortedProducts &&
-          sortedProducts.map((p) => <Product key={p._id} product={p} />)}
+          sortedProducts.map((p) => (
+            <Product
+              key={p._id}
+              product={p}
+              isReviewOpened={isReviewOpened}
+              setIsReviewOpened={setIsReviewOpened}
+            />
+          ))}
       </div>
 
       <div className={s.hhTitle}>

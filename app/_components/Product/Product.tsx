@@ -1,22 +1,28 @@
-"use client";
-
-import { ProductProps } from "./Product.props";
-import s from "./Product.module.css";
-import { Card, Rating, Tag, Button, Divider, Review } from "../";
-import Image from "next/image";
 import { declOfNum, priceGvn } from "@/app/_lib/helpers";
+import {
+  Card,
+  Rating,
+  Tag,
+  Button,
+  Divider,
+  Review,
+  ReviewForm,
+} from "../index";
+import { ProductProps } from "./Product.props";
+
+import Image from "next/image";
 import cn from "classnames";
-import { useState } from "react";
+import s from "./Product.module.css";
 
 export const Product = ({
   product,
   className,
+  isReviewOpened,
+  setIsReviewOpened,
   ...props
 }: ProductProps): JSX.Element => {
-  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
-
   return (
-    <>
+    <div className={className} {...props}>
       <Card className={s.product}>
         <div className={s.logo}>
           <Image
@@ -116,9 +122,13 @@ export const Product = ({
         })}
       >
         {product.reviews.map((r) => (
-          <Review key={r._id} review={r} />
+          <div key={r._id}>
+            <Review review={r} />
+            <Divider />
+          </div>
         ))}
+        <ReviewForm productId={product._id} />
       </Card>
-    </>
+    </div>
   );
 };

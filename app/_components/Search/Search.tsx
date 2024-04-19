@@ -3,7 +3,7 @@
 import { SearchProps } from "./Search.props";
 import s from "./Search.module.css";
 import cn from "classnames";
-import { Input, Button } from "../";
+import { Input, Button } from "..";
 import { useState, KeyboardEvent } from "react";
 import GlassIcon from "../../_lib/icons/glass.svg";
 import { useRouter } from "next/navigation";

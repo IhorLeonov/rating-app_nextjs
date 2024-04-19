@@ -3,8 +3,8 @@ import s from "./Review.module.css";
 import cn from "classnames";
 import UserIcon from "../../_lib/icons/user.svg";
 import { format } from "date-fns";
-import { ru } from "date-fns/locale";
 import { Rating } from "../Rating/Rating";
+import { ru } from "date-fns/locale";
 
 export const Review = ({
   review,
@@ -23,7 +23,7 @@ export const Review = ({
       </div>
 
       <div className={s.date}>
-        {format(new Date(createdAt), "dd MMMM yyyy")}
+        {format(new Date(createdAt), "dd MMMM yyyy", { locale: ru })}
       </div>
 
       <div className={s.rating}>
