@@ -7,13 +7,15 @@ import StarSvg from "../../_lib/icons/star.svg";
 
 export const Rating = ({
   isEditable = false,
-  // setRating,
-  // rating,
+  setRating,
+  rating,
   className,
   ...props
 }: RatingProps): JSX.Element => {
-  const [ratingArr, setRatingArr] = useState<JSX.Element[]>(new Array(5).fill(<></>));
-  const [rating, setRating] = useState<number>(0);
+  const [ratingArr, setRatingArr] = useState<JSX.Element[]>(
+    new Array(5).fill(<></>)
+  );
+  // const [rating, setRating] = useState<number>(0);
 
   useEffect(() => {
     constructRating(rating);
