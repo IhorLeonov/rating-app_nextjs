@@ -2,7 +2,6 @@
 // import { MenuItem } from "@/interfaces/menu.interface";
 // import axios from "axios";
 import { Metadata } from "next";
-import { Rating, Tag, Input, TextArea } from "./_components";
 
 export async function generateMetadata(): Promise<Metadata> {
   // ...
@@ -43,21 +42,18 @@ export default async function Home() {
       {/* <Tag size="s" color="ghost">
         Ghost
       </Tag> */}
-      <Tag size="m" color="red">
+      {/* <Tag size="m" color="red">
         Red
-      </Tag>
-      <Tag size="m" color="green">
+      </Tag> */}
+      {/* <Tag size="m" color="green">
         Green
-      </Tag>
-      <Tag size="m" color="grey">
+      </Tag> */}
+      {/* <Tag size="m" color="grey">
         Grey
-      </Tag>
-      <Tag size="m" color="primary">
+      </Tag> */}
+      {/* <Tag size="m" color="primary">
         Primary
-      </Tag>
-      <Rating isEditable />
-      <Input placeholder="Имя" />
-      <TextArea placeholder="Текст отзыва" />
+      </Tag> */}
     </>
   );
 }
