@@ -8,6 +8,12 @@
   align-items: center;
 }
 
+.submit,
+.rating,
+.description {
+  margin-top: 4px;
+}
+
 .description,
 .submit {
   grid-column: start / end;
@@ -22,6 +28,7 @@
 }
 
 .rating {
+  position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
@@ -64,5 +71,8 @@
 @media screen and (max-width: 640px) {
   .reviewForm {
     grid-template-columns: [start] 1fr [end];
+  }
+  .title {
+    margin-top: 4px;
   }
 }

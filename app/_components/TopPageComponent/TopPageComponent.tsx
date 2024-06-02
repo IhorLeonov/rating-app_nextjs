@@ -62,7 +62,7 @@ export default function TopPageComponent({
       <div className={s.hhTitle}>
         <Htag tag="h2">Вакансии - {page.category}</Htag>
         <Tag color="red" size="m">
-          hh.gvn
+          work.com
         </Tag>
       </div>
 
