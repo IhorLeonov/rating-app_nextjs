@@ -5,9 +5,9 @@ import { AppContextProvider } from "./_context/app.context";
 import { Header, Sidebar, Footer } from "./_components/Layout";
 import { getMenu } from "./_api/menu-api";
 
+import s from "./layout.module.css";
 import cn from "classnames";
-import s from "../styles/layout.module.css";
-import "../styles/globals.css";
+import "./globals.css";
 
 const inter = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 

@@ -1,21 +1,32 @@
 "use client";
-import { useEffect, useState, KeyboardEvent } from "react";
-import { RatingProps } from "./Rating.props";
+
 import s from "./Rating.module.css";
 import cn from "classnames";
 import StarSvg from "../../_lib/icons/star.svg";
 
-export const Rating = ({
-  isEditable = false,
-  setRating,
-  rating,
-  className,
-  ...props
-}: RatingProps): JSX.Element => {
+import {
+  useEffect,
+  useState,
+  KeyboardEvent,
+  forwardRef,
+  ForwardedRef,
+} from "react";
+import { RatingProps } from "./Rating.props";
+
+const RatingComponent = (
+  {
+    isEditable = false,
+    setRating,
+    rating = 0,
+    error,
+    className,
+    ...props
+  }: RatingProps,
+  ref: ForwardedRef<HTMLDivElement>
+): JSX.Element => {
   const [ratingArr, setRatingArr] = useState<JSX.Element[]>(
     new Array(5).fill(<></>)
   );
-  // const [rating, setRating] = useState<number>(0);
 
   useEffect(() => {
     constructRating(rating);
@@ -61,11 +72,21 @@ export const Rating = ({
     if (e.code !== "Space" || !setRating) return;
     setRating(idx);
   };
+
   return (
-    <div {...props}>
+    <div
+      className={cn(s.ratingWrapper, {
+        [s.error]: error,
+      })}
+      ref={ref}
+      {...props}
+    >
       {ratingArr.map((icon, idx) => (
         <span key={idx}>{icon}</span>
       ))}
+      {error && <span className={s.errorMessage}>{error.message}</span>}
     </div>
   );
 };
+
+export const Rating = forwardRef(RatingComponent);

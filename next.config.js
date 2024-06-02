@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "old-images.hb.ru-msk.vkcs.cloud",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "old-images.hb.ru-msk.vkcs.cloudhttp",
+        port: "",
+      },
     ],
   },
 

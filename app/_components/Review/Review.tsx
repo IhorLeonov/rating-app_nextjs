@@ -1,10 +1,11 @@
-import { ReviewProps } from "./Review.props";
 import s from "./Review.module.css";
 import cn from "classnames";
 import UserIcon from "../../_lib/icons/user.svg";
+
 import { format } from "date-fns";
 import { Rating } from "../Rating/Rating";
 import { ru } from "date-fns/locale";
+import { ReviewProps } from "./Review.props";
 
 export const Review = ({
   review,
