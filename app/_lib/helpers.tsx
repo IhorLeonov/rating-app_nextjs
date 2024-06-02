@@ -33,10 +33,10 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 ];
 
 export const priceGvn = (price: number): string =>
-  price
+  (price / 100)
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-    .concat(" ¥");
+    .concat(" $");
 
 export const declOfNum = (
   number: number,
