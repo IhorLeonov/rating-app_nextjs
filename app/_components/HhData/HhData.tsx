@@ -1,7 +1,6 @@
 import { HhDataProps } from "./HhData.props";
 import { Card } from "..";
 import s from "./HhData.module.css";
-import cn from "classnames";
 import RateIcon from "../../_lib/icons/circle-star.svg";
 import { priceGvn } from "@/app/_lib/helpers";
 
