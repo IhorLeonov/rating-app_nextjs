@@ -11,7 +11,5 @@ export async function getMenu(firstCategory: number): Promise<MenuItem[]> {
     next: { revalidate: 10 },
   });
 
-  // console.log("revalidating getMenu");
-
   return res.json();
 }

@@ -13,6 +13,7 @@ import { ProductProps } from "./Product.props";
 import Image from "next/image";
 import cn from "classnames";
 import s from "./Product.module.css";
+import { useRef } from "react";
 
 export const Product = ({
   product,
@@ -21,6 +22,16 @@ export const Product = ({
   setIsReviewOpened,
   ...props
 }: ProductProps): JSX.Element => {
+  const reviewRef = useRef<HTMLDivElement>(null);
+
+  const scrollToReview = () => {
+    setIsReviewOpened(true);
+    reviewRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className={className} {...props}>
       <Card className={s.product}>
@@ -64,8 +75,10 @@ export const Product = ({
         <div className={s.priceTitle}>цена</div>
         <div className={s.creditTitle}>кредит</div>
         <div className={s.rateTitle}>
-          {product.reviewCount}{" "}
-          {declOfNum(product.reviewCount, ["отзыв", "отзыва", "отзывов"])}
+          <a href="#ref" onClick={scrollToReview}>
+            {product.reviewCount}{" "}
+            {declOfNum(product.reviewCount, ["отзыв", "отзыва", "отзывов"])}
+          </a>
         </div>
 
         <Divider className={s.hr} />
@@ -120,6 +133,7 @@ export const Product = ({
           [s.opened]: isReviewOpened,
           [s.closed]: !isReviewOpened,
         })}
+        ref={reviewRef}
       >
         {product.reviews.map((r) => (
           <div key={r._id}>

@@ -1,14 +1,13 @@
 "use client";
 
-import { useReducer, useState } from "react";
-import { Htag, Tag, HhData, Advantages, Sort, Product } from "../index";
+import s from "./TopPageComponent.module.css";
 
+import { useEffect, useReducer, useState } from "react";
+import { Htag, Tag, HhData, Advantages, Sort, Product } from "../index";
 import { TopLevelCategory, TopPageModel } from "@/interfaces/page.interface";
 import { ProductModel } from "@/interfaces/product.interface";
 import { SortEnum } from "../Sort/Sort.props";
 import { sortReducer } from "./sort.reducer";
-
-import s from "./TopPageComponent.module.css";
 
 export interface TopPageComponentProps {
   firstCategory: TopLevelCategory;
@@ -34,6 +33,10 @@ export default function TopPageComponent({
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };
+
+  useEffect(() => {
+    dispatchSort({ type: "reset", initialState: products });
+  }, [products]);
 
   return (
     <div className={s.wrapper}>

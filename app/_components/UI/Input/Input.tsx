@@ -1,8 +1,8 @@
-import { InputProps } from "./Input.props";
 import s from "./Input.module.css";
 import cn from "classnames";
+
 import { ForwardedRef, forwardRef } from "react";
-import { error } from "console";
+import { InputProps } from "./Input.props";
 
 const InputComponent = (
   { className, error, ...props }: InputProps,

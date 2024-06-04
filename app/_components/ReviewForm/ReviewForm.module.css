@@ -34,16 +34,27 @@
   gap: 20px;
 }
 
-.success {
-  background: var(--green-light);
+.notify {
   padding: 20px;
   position: relative;
   border-radius: 5px;
   margin-top: 20px;
 }
 
+.success {
+  background: var(--green-light);
+}
+
+.error {
+  background: var(--red-light);
+}
+
 .successTitle {
   font-weight: bold;
+}
+
+.error .closeIcon path {
+  stroke: var(--red);
 }
 
 .closeIcon {
