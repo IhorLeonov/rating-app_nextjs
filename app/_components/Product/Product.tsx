@@ -9,19 +9,23 @@ import {
   ReviewForm,
 } from "../index";
 import { ProductProps } from "./Product.props";
+import { ForwardedRef, forwardRef, useRef } from "react";
+import { motion } from "framer-motion";
 
 import Image from "next/image";
 import cn from "classnames";
 import s from "./Product.module.css";
-import { useRef } from "react";
 
-export const Product = ({
-  product,
-  className,
-  isReviewOpened,
-  setIsReviewOpened,
-  ...props
-}: ProductProps): JSX.Element => {
+const ProductComponent = (
+  {
+    product,
+    className,
+    isReviewOpened,
+    setIsReviewOpened,
+    ...props
+  }: ProductProps,
+  ref: ForwardedRef<HTMLDivElement>
+): JSX.Element => {
   const reviewRef = useRef<HTMLDivElement>(null);
 
   const scrollToReview = () => {
@@ -33,7 +37,7 @@ export const Product = ({
   };
 
   return (
-    <div className={className} {...props}>
+    <div className={className} ref={ref} {...props}>
       <Card className={s.product}>
         <div className={s.logo}>
           <Image
@@ -57,7 +61,7 @@ export const Product = ({
 
         <div className={s.credit}>
           {priceGvn(product.credit)}
-          <span className={s.month}>/мес</span>
+          <span className={s.month}>/mth</span>
         </div>
 
         <div className={s.rating}>
@@ -72,12 +76,13 @@ export const Product = ({
           ))}
         </div>
 
-        <div className={s.priceTitle}>цена</div>
-        <div className={s.creditTitle}>кредит</div>
+        <div className={s.priceTitle}>price</div>
+        <div className={s.creditTitle}>credit</div>
         <div className={s.rateTitle}>
           <a href="#ref" onClick={scrollToReview}>
             {product.reviewCount}{" "}
-            {declOfNum(product.reviewCount, ["отзыв", "отзыва", "отзывов"])}
+            {/* {declOfNum(product.reviewCount, ["отзыв", "отзыва", "отзывов"])} */}
+            {declOfNum(product.reviewCount, ["review", "reviews", "reviews"])}
           </a>
         </div>
 
@@ -114,7 +119,7 @@ export const Product = ({
 
         <div className={s.actions}>
           <Button appearance="primary" arrow="right">
-            Узнать подробнее
+            Get more
           </Button>
           <Button
             appearance="ghost"
@@ -122,7 +127,7 @@ export const Product = ({
             className={s.reviewBtn}
             onClick={() => setIsReviewOpened(!isReviewOpened)}
           >
-            Читать отзывы
+            Reviews
           </Button>
         </div>
       </Card>
@@ -146,3 +151,5 @@ export const Product = ({
     </div>
   );
 };
+
+export const Product = motion(forwardRef(ProductComponent));

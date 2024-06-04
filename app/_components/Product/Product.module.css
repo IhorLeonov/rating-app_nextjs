@@ -100,6 +100,13 @@
 }
 
 .rateTitle a {
+  color: var(--accent);
+  font-weight: 500;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.rateTitle a:hover {
   color: var(--primary);
 }
 

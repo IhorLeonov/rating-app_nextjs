@@ -54,6 +54,7 @@ export default function TopPageComponent({
         {sortedProducts &&
           sortedProducts.map((p) => (
             <Product
+              layout
               key={p._id}
               product={p}
               isReviewOpened={isReviewOpened}

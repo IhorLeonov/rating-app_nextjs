@@ -9,7 +9,11 @@ import s from "./layout.module.css";
 import cn from "classnames";
 import "./globals.css";
 
-const inter = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
+const inter = Noto_Sans_KR({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Our the best choice",

@@ -6,6 +6,7 @@
   text-align: center;
   border: none;
   border-radius: 5px;
+  width: 120px;
 
   font-size: 14px;
   transition: all 0.2s;
@@ -18,7 +19,6 @@
 
 .primary:hover,
 .primary:focus {
-  /* background-color: var(--primary-hover); */
   background-color: var(--accent);
   color: var(--black);
 }
@@ -46,11 +46,6 @@
   transition: all 0.2s;
 }
 
-/* .primary svg,
-.ghost:hover svg,
-.ghost:focus svg {
-  fill: var(--white);
-} */
 .primary svg {
   fill: var(--white);
 }

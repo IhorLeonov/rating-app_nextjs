@@ -30,3 +30,11 @@
 .sort span:not(.active) {
   grid-template-columns: 1fr;
 }
+
+.type {
+  transition: color 0.2s ease-in-out;
+}
+
+.type:hover {
+  color: var(--accent);
+}

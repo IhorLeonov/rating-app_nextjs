@@ -15,18 +15,18 @@ export const Sort = ({
     <div className={cn(s.sort, className)} {...props}>
       <span
         onClick={() => setSort(SortEnum.Rating)}
-        className={cn({ [s.active]: sort === SortEnum.Rating })}
+        className={cn(s.type, { [s.active]: sort === SortEnum.Rating })}
       >
         <SortIcon className={s.sortIcon} />
-        По рейтингу
+        By rating
       </span>
 
       <span
         onClick={() => setSort(SortEnum.Price)}
-        className={cn({ [s.active]: sort === SortEnum.Price })}
+        className={cn(s.type, { [s.active]: sort === SortEnum.Price })}
       >
         <SortIcon className={s.sortIcon} />
-        По цене
+        By price
       </span>
     </div>
   );

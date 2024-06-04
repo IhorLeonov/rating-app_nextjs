@@ -49,20 +49,20 @@ export const ReviewForm = ({
           {...register("name", {
             required: { value: true, message: "Введите имя" },
           })}
-          placeholder="Имя"
+          placeholder="Name"
           error={errors.name}
         />
         <Input
           {...register("title", {
             required: { value: true, message: "Введите заголовок" },
           })}
-          placeholder="Заголовок отзыва"
+          placeholder="Review title"
           className={s.title}
           error={errors.title}
         />
 
         <div className={s.rating}>
-          <span>Оценка:</span>
+          <span>Rating:</span>
 
           <Controller
             control={control}
@@ -82,28 +82,30 @@ export const ReviewForm = ({
 
         <TextArea
           {...register("description", {
-            required: { value: true, message: "Введите описание" },
+            required: { value: true, message: "Enter description" },
           })}
-          placeholder="Текст отзыва"
+          placeholder="Review description"
           className={s.description}
           error={errors.description}
         />
 
         <div className={s.submit}>
           <Button type="submit" appearance="primary">
-            Отправить
+            Send
           </Button>
           <span className={s.info}>
-            * Перед публикацией отзыв пройдет предварительную модерацию и
-            проверку
+            * Before adding, the review will get additional moderation and
+            verification.
           </span>
         </div>
       </div>
 
       {isSuccess && (
         <div className={cn(s.notify, s.success)}>
-          <div className={s.successTitle}>Ваш отзыв отправлен</div>
-          <div>Спасибо, ваш отзыв будет опубликован после проверки.</div>
+          <div className={s.successTitle}>The review was sent</div>
+          <div>
+            Thank you, your review will be published after verification.
+          </div>
           <CloseIcon
             className={s.closeIcon}
             onClick={() => setIsSuccess(false)}

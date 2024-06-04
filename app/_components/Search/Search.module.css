@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.input input {
+  padding-right: 35px;
+}
+
 .button {
   position: absolute;
   top: 3px;

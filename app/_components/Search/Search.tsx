@@ -24,7 +24,7 @@ export default function Search({ className, ...props }: SearchProps) {
     <div className={cn(className, s.search)} {...props}>
       <Input
         className={s.input}
-        placeholder="Поиск..."
+        placeholder="Search..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleKeyDown}
