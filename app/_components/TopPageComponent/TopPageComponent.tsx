@@ -47,7 +47,7 @@ export default function TopPageComponent({
             {products.length}
           </Tag>
         )}
-        <Sort sort={sort} setSort={setSort} />
+        {products.length > 1 && <Sort sort={sort} setSort={setSort} />}
       </div>
 
       <div>
