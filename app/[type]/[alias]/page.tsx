@@ -1,8 +1,9 @@
-import { getMenu } from "@/app/_api/menu-api";
-import { getPage } from "@/app/_api/page-api";
-import { getProducts } from "@/app/_api/products-api";
-import TopPageComponent from "@/app/_components/TopPageComponent/TopPageComponent";
-import { firstLevelMenu } from "@/app/_lib/helpers";
+import TopPageComponent from "@/app/components/organisms/TopPageComponent/TopPageComponent";
+
+import { getMenu } from "@/app/api/menu-api";
+import { getPage } from "@/app/api/page-api";
+import { getProducts } from "@/app/api/products-api";
+import { firstLevelMenu } from "@/app/lib/helpers";
 
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
