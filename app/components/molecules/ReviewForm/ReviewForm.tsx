@@ -1,3 +1,5 @@
+"use client";
+
 import s from "./ReviewForm.module.css";
 import cn from "classnames";
 import CloseIcon from "../../../lib/icons/cross.svg";

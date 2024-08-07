@@ -3,7 +3,7 @@
 import s from "./TopPageComponent.module.css";
 
 import { useEffect, useReducer, useState } from "react";
-import { Htag, Tag, HhData, Advantages, Sort, Product } from "../../index";
+import { Htag, Tag, HhData, Advantages, Sort, Product } from "@/app/components";
 import {
   TopLevelCategory,
   TopPageModel,

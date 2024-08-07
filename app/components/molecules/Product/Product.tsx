@@ -1,3 +1,5 @@
+"use client";
+
 import s from "./Product.module.css";
 import cn from "classnames";
 import Image from "next/image";
@@ -27,6 +29,11 @@ const ProductComponent = (
   ref: ForwardedRef<HTMLDivElement>
 ): JSX.Element => {
   const reviewRef = useRef<HTMLDivElement>(null);
+
+  const variants = {
+    visible: { opacity: 1, height: "auto" },
+    hidden: { opacity: 0, height: 0 },
+  };
 
   const scrollToReview = () => {
     setIsReviewOpened(true);
@@ -132,22 +139,21 @@ const ProductComponent = (
         </div>
       </Card>
 
-      <Card
-        color="blue"
-        className={cn(s.reviews, {
-          [s.opened]: isReviewOpened,
-          [s.closed]: !isReviewOpened,
-        })}
-        ref={reviewRef}
+      <motion.div
+        animate={isReviewOpened ? "visible" : "hidden"}
+        variants={variants}
+        initial="hidden"
       >
-        {product.reviews.map((r) => (
-          <div key={r._id}>
-            <Review review={r} />
-            <Divider />
-          </div>
-        ))}
-        <ReviewForm productId={product._id} />
-      </Card>
+        <Card color="blue" className={s.reviews} ref={reviewRef}>
+          {product.reviews.map((r) => (
+            <div key={r._id}>
+              <Review review={r} />
+              <Divider />
+            </div>
+          ))}
+          <ReviewForm productId={product._id} />
+        </Card>
+      </motion.div>
     </div>
   );
 };

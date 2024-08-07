@@ -8,6 +8,7 @@ import { getMenu } from "./api/menu-api";
 import s from "./layout.module.css";
 import cn from "classnames";
 import "./globals.css";
+import { Up } from "./components";
 
 const inter = Noto_Sans_KR({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default async function RootLayout({
           <Sidebar className={s.sidebar} />
           <main className={s.main}>{children}</main>
           <Footer className={s.footer} />
+          <Up />
         </AppContextProvider>
       </body>
     </html>

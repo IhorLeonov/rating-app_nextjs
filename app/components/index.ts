@@ -1,5 +1,6 @@
 export * from "./atoms/Htag/Htag";
 export * from "./atoms/Button/Button";
+export * from "./atoms/ButtonIcon/ButtonIcon";
 export * from "./atoms/P/P";
 export * from "./atoms/Tag/Tag";
 export * from "./atoms/Input/Input";
@@ -15,5 +16,6 @@ export * from "./molecules/Search/Search";
 export * from "./molecules/Product/Product";
 export * from "./molecules/Review/Review";
 export * from "./molecules/ReviewForm/ReviewForm";
+export * from "./molecules/Up/Up";
 
 export * from "./organisms/TopPageComponent/TopPageComponent";
