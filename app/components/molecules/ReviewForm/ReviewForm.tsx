@@ -14,6 +14,7 @@ import { useState } from "react";
 export const ReviewForm = ({
   productId,
   className,
+  isOpened,
   ...props
 }: ReviewFormProps): JSX.Element => {
   const {
@@ -53,6 +54,7 @@ export const ReviewForm = ({
           })}
           placeholder="Name"
           error={errors.name}
+          tabIndex={isOpened ? 0 : -1}
         />
         <Input
           {...register("title", {
@@ -61,6 +63,7 @@ export const ReviewForm = ({
           placeholder="Review title"
           className={s.title}
           error={errors.title}
+          tabIndex={isOpened ? 0 : -1}
         />
 
         <div className={s.rating}>
@@ -89,10 +92,15 @@ export const ReviewForm = ({
           placeholder="Review description"
           className={s.description}
           error={errors.description}
+          tabIndex={isOpened ? 0 : -1}
         />
 
         <div className={s.submit}>
-          <Button type="submit" appearance="primary">
+          <Button
+            type="submit"
+            appearance="primary"
+            tabIndex={isOpened ? 0 : -1}
+          >
             Send
           </Button>
           <span className={s.info}>

@@ -31,8 +31,6 @@ export default function TopPageComponent({
     }
   );
 
-  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
-
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };
@@ -55,15 +53,7 @@ export default function TopPageComponent({
 
       <div>
         {sortedProducts &&
-          sortedProducts.map((p) => (
-            <Product
-              layout
-              key={p._id}
-              product={p}
-              isReviewOpened={isReviewOpened}
-              setIsReviewOpened={setIsReviewOpened}
-            />
-          ))}
+          sortedProducts.map((p) => <Product layout key={p._id} product={p} />)}
       </div>
 
       <div className={s.hhTitle}>

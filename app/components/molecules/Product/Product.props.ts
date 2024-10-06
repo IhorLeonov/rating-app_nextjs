@@ -9,6 +9,4 @@ import {
 export interface ProductProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   product: ProductModel;
-  isReviewOpened: boolean;
-  setIsReviewOpened: Dispatch<SetStateAction<boolean>>;
 }

@@ -25,14 +25,13 @@ a {
   --black: #3b434e;
   --gray-light: #ebebeb;
   --gray: #a4a4a4;
-  --gray-dark: #787d85;
+  --gray-dark: #6c716d;
   --white: white;
   --primary: #060412;
-  /* --primary: #7653fc; */
-  --accent: rgb(196, 229, 65);
+  --accent: #360598;
   --red-light: #f49d8e;
   --red: #fc836d;
-  --green: #1dc37e;
+  --green: #127a4f;
   --green-light: #c8f8e4;
   --font-family: "Noto Sans KR", sans-serif;
 }

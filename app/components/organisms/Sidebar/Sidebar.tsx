@@ -12,7 +12,7 @@ import { SidebarProps } from "./Sidebar.props";
 export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
   return (
     <section className={cn(className, s.sidebar)} {...props}>
-      <Link href="/">
+      <Link aria-label="Link to home" href="/">
         <Logo />
       </Link>
       <Search />

@@ -186,7 +186,7 @@
 
   .tags {
     grid-area: tags;
-
+    margin-top: 8px;
     margin-bottom: 20px;
   }
 

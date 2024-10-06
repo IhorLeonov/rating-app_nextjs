@@ -4,11 +4,11 @@ import { Noto_Sans_KR } from "next/font/google";
 import { AppContextProvider } from "./context/app.context";
 import { Header, Sidebar, Footer } from "./components/organisms";
 import { getMenu } from "./api/menu-api";
+import { Up } from "./components";
 
 import s from "./layout.module.css";
 import cn from "classnames";
 import "./globals.css";
-import { Up } from "./components";
 
 const inter = Noto_Sans_KR({
   subsets: ["latin"],

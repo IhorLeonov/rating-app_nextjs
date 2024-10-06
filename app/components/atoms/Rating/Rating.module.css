@@ -2,6 +2,10 @@
   fill: var(--primary-hover);
 }
 
+.star {
+  display: inline-block;
+}
+
 .star svg {
   margin-right: 5px;
 }

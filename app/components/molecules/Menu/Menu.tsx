@@ -1,6 +1,6 @@
 import { AppContext } from "@/app/context/app.context";
 import { FirstLevelMenuItem, PageItem } from "@/app/interfaces/menu.interface";
-import { useContext } from "react";
+import { useContext, KeyboardEvent } from "react";
 import { usePathname } from "next/navigation";
 import { firstLevelMenu } from "@/app/lib/helpers";
 import { motion } from "framer-motion";
@@ -44,6 +44,13 @@ export function Menu() {
       );
   };
 
+  const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
+    if (key.code === "Space" || key.code === "Enter") {
+      key.preventDefault();
+      openSecondLevel(secondCategory);
+    }
+  };
+
   const buildFirstLevel = () => {
     return (
       <>
@@ -77,6 +84,10 @@ export function Menu() {
           return (
             <div key={m._id.secondCategory}>
               <div
+                tabIndex={0}
+                onKeyDown={(key: KeyboardEvent) =>
+                  openSecondLevelKey(key, m._id.secondCategory)
+                }
                 className={s.secondLevel}
                 onClick={() => openSecondLevel(m._id.secondCategory)}
               >
@@ -92,7 +103,7 @@ export function Menu() {
                   // [s.secondLevelBlockOpened]: m.isOpened,
                 })}
               >
-                {buildThirdLevel(m.pages, menuItem.route)}
+                {buildThirdLevel(m.pages, menuItem.route, m.isOpened ?? false)}
               </motion.div>
             </div>
           );
@@ -101,7 +112,11 @@ export function Menu() {
     );
   };
 
-  const buildThirdLevel = (pages: PageItem[], route: string) => {
+  const buildThirdLevel = (
+    pages: PageItem[],
+    route: string,
+    isOpened: boolean
+  ) => {
     return pages.map((p) => (
       <motion.div
         key={p._id}
@@ -109,6 +124,7 @@ export function Menu() {
         className={s.thirdLevelBox}
       >
         <Link
+          tabIndex={isOpened ? 0 : -1}
           href={`/${route}/${p.alias}`}
           className={cn(s.thirdLevel, {
             [s.thirdLevelActive]: `/${route}/${p.alias}` === pathName,
