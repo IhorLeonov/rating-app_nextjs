@@ -4,20 +4,6 @@
   gap: 20px;
 }
 
-.logo {
-  cursor: pointer;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-
-  color: var(--accent);
-  transition: all 0.2s ease-in-out;
-}
-
-.logo:hover {
-  scale: 1.05;
-}
-
 .logoSmallText {
   font-size: 18px;
   font-weight: 400;

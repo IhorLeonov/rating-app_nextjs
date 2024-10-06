@@ -17,5 +17,3 @@ export * from "./molecules/Product/Product";
 export * from "./molecules/Review/Review";
 export * from "./molecules/ReviewForm/ReviewForm";
 export * from "./molecules/Up/Up";
-
-export * from "./organisms/TopPageComponent/TopPageComponent";

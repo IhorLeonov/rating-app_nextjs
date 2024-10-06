@@ -13,10 +13,7 @@ export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
   return (
     <section className={cn(className, s.sidebar)} {...props}>
       <Link href="/">
-        {/* <Logo className={s.logo} /> */}
-        <div className={s.logo}>
-          RATE<span className={s.logoSmallText}> .top</span>
-        </div>
+        <Logo />
       </Link>
       <Search />
       <Menu />

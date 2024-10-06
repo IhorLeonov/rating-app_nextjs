@@ -9,6 +9,7 @@
 
 .input input {
   padding-right: 35px;
+  width: 100%;
 }
 
 .button {

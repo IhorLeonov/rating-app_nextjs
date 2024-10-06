@@ -1,10 +1,6 @@
 import { ProductModel } from "@/app/interfaces/product.interface";
 import { SortEnum } from "../../molecules/Sort/Sort.props";
 
-// export type SortActions = {
-//   type: SortEnum.Price | SortEnum.Rating;
-// };
-
 export type SortActions =
   | { type: SortEnum }
   | { type: SortEnum.Rating }
