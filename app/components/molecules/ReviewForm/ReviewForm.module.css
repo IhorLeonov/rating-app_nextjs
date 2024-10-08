@@ -53,16 +53,14 @@
   font-weight: bold;
 }
 
-.error .closeIcon path {
-  stroke: var(--red);
-}
-
-.closeIcon {
+.close {
   position: absolute;
   top: 20px;
   right: 20px;
+}
 
-  cursor: pointer;
+.error .close path {
+  stroke: var(--red);
 }
 
 @media screen and (max-width: 1100px) {

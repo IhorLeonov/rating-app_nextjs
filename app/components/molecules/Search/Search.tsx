@@ -22,7 +22,7 @@ export default function Search({ className, ...props }: SearchProps) {
   };
 
   return (
-    <div className={cn(className, s.search)} {...props}>
+    <form role="search" className={cn(className, s.search)} {...props}>
       <Input
         className={s.input}
         placeholder="Search..."
@@ -31,9 +31,14 @@ export default function Search({ className, ...props }: SearchProps) {
         onKeyDown={handleKeyDown}
       />
 
-      <Button appearance="primary" className={s.button} onClick={goToSearch}>
+      <Button
+        aria-label="Search the site"
+        appearance="primary"
+        className={s.button}
+        onClick={goToSearch}
+      >
         <GlassIcon />
       </Button>
-    </div>
+    </form>
   );
 }

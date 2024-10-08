@@ -11,6 +11,7 @@ import {
 import { ProductModel } from "@/app/interfaces/product.interface";
 import { SortEnum } from "../../molecules/Sort/Sort.props";
 import { sortReducer } from "./sort.reducer";
+import { useReducedMotion } from "framer-motion";
 
 export interface TopPageComponentProps {
   firstCategory: TopLevelCategory;
@@ -30,6 +31,7 @@ export default function TopPageComponent({
       sort: SortEnum.Rating,
     }
   );
+  const shouldReduceMotion = useReducedMotion();
 
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
@@ -51,9 +53,16 @@ export default function TopPageComponent({
         {products.length > 1 && <Sort sort={sort} setSort={setSort} />}
       </div>
 
-      <div>
+      <div role="list">
         {sortedProducts &&
-          sortedProducts.map((p) => <Product layout key={p._id} product={p} />)}
+          sortedProducts.map((p) => (
+            <Product
+              role="listitem"
+              layout={shouldReduceMotion ? false : true}
+              key={p._id}
+              product={p}
+            />
+          ))}
       </div>
 
       <div className={s.hhTitle}>

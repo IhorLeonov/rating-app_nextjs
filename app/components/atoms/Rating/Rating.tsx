@@ -64,6 +64,12 @@ const RatingComponent = (
           tabIndex={computeFocus(rating, idx)}
           onKeyDown={handleKey}
           ref={(r) => ratingArrayRef.current?.push(r)}
+          role={isEditable ? "slider" : ""}
+          aria-invalid={!!error}
+          aria-valuenow={rating}
+          aria-valuemax={5}
+          aria-label={isEditable ? "Put rating" : "rating" + rating}
+          aria-valuemin={1}
         >
           <StarIcon />
         </span>
@@ -113,7 +119,11 @@ const RatingComponent = (
       {ratingArr.map((icon, idx) => (
         <span key={idx}>{icon}</span>
       ))}
-      {error && <span className={s.errorMessage}>{error.message}</span>}
+      {error && (
+        <span role="alert" className={s.errorMessage}>
+          {error.message}
+        </span>
+      )}
     </div>
   );
 };

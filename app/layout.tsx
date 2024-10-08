@@ -38,7 +38,9 @@ export default async function RootLayout({
         <AppContextProvider menu={menu} firstCategory={firstCategory}>
           <Header className={s.header} />
           <Sidebar className={s.sidebar} />
-          <main className={s.main}>{children}</main>
+          <main role="main" className={s.main}>
+            {children}
+          </main>
           <Footer className={s.footer} />
           <Up />
         </AppContextProvider>

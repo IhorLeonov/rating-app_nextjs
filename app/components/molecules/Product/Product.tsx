@@ -54,7 +54,10 @@ const ProductComponent = (
         <div className={s.title}>{product.title}</div>
 
         <div className={s.price}>
-          {priceGvn(product.price)}
+          <span>
+            <span className="visualy-hidden">price</span>
+            {priceGvn(product.price)}
+          </span>
           {product.oldPrice && (
             <Tag className={s.oldPrice} color="green">
               {priceGvn(product.price - product.oldPrice)}
@@ -63,11 +66,17 @@ const ProductComponent = (
         </div>
 
         <div className={s.credit}>
-          {priceGvn(product.credit)}
+          <span>
+            <span className="visualy-hidden">credit</span>
+            {priceGvn(product.credit)}
+          </span>
           <span className={s.month}>/mth</span>
         </div>
 
         <div className={s.rating}>
+          <span className="visualy-hidden">
+            {"rating" + product.reviewAvg ?? product.initialRating}
+          </span>
           <Rating rating={product.reviewAvg ?? product.initialRating}></Rating>
         </div>
 
@@ -79,8 +88,12 @@ const ProductComponent = (
           ))}
         </div>
 
-        <div className={s.priceTitle}>price</div>
-        <div className={s.creditTitle}>credit</div>
+        <div className={s.priceTitle} aria-hidden>
+          price
+        </div>
+        <div className={s.creditTitle} aria-hidden>
+          credit
+        </div>
         <div className={s.rateTitle}>
           <a href="#ref" onClick={scrollToReview}>
             {product.reviewCount}{" "}
@@ -129,6 +142,7 @@ const ProductComponent = (
             arrow={isReviewOpened ? "down" : "right"}
             className={s.reviewBtn}
             onClick={() => setIsReviewOpened(!isReviewOpened)}
+            aria-expanded={isReviewOpened}
           >
             Reviews
           </Button>

@@ -1,9 +1,9 @@
 import { AppContext } from "@/app/context/app.context";
 import { FirstLevelMenuItem, PageItem } from "@/app/interfaces/menu.interface";
-import { useContext, KeyboardEvent } from "react";
+import { useContext, KeyboardEvent, useState } from "react";
 import { usePathname } from "next/navigation";
 import { firstLevelMenu } from "@/app/lib/helpers";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import cn from "classnames";
 import s from "./Menu.module.css";
@@ -11,15 +11,20 @@ import Link from "next/link";
 
 export function Menu() {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
+  const [announce, setAnnounce] = useState<"closed" | "opened" | undefined>();
+
   const pathName = usePathname();
+  const shouldReduceMotion = useReducedMotion();
 
   const variantsParent = {
     visible: {
       marginBottom: 20,
-      transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-      },
+      transition: shouldReduceMotion
+        ? {}
+        : {
+            when: "beforeChildren",
+            staggerChildren: 0.1,
+          },
     },
     hidden: { marginBottom: 0 },
   };
@@ -29,7 +34,7 @@ export function Menu() {
       opacity: 1,
       height: "auto",
     },
-    hidden: { opacity: 0, height: 0 },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0, height: 0 },
   };
 
   const openSecondLevel = (secondCategory: string) => {
@@ -37,6 +42,7 @@ export function Menu() {
       setMenu(
         menu.map((m) => {
           if (m._id.secondCategory === secondCategory) {
+            setAnnounce(m.isOpened ? "closed" : "opened");
             m.isOpened = !m.isOpened;
           }
           return m;
@@ -53,9 +59,10 @@ export function Menu() {
 
   const buildFirstLevel = () => {
     return (
-      <>
+      <ul className={s.firstLevelList}>
         {firstLevelMenu.map((m) => (
-          <div key={m.route}>
+          // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+          <li key={m.route} aria-expanded={m.id === firstCategory}>
             <Link href={`/${m.route}`}>
               <div
                 className={cn(s.firstLevel, {
@@ -67,48 +74,46 @@ export function Menu() {
               </div>
             </Link>
             {m.id === firstCategory && buildSecondLevel(m)}
-          </div>
+          </li>
         ))}
-      </>
+      </ul>
     );
   };
 
   const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
     return (
-      <div className={s.secondBlock}>
+      <ul className={s.secondBlock}>
         {menu.map((m) => {
           if (m.pages.map((p) => p.alias).includes(pathName.split("/")[2])) {
             m.isOpened = true;
           }
 
           return (
-            <div key={m._id.secondCategory}>
-              <div
-                tabIndex={0}
+            <li key={m._id.secondCategory}>
+              <button
                 onKeyDown={(key: KeyboardEvent) =>
                   openSecondLevelKey(key, m._id.secondCategory)
                 }
                 className={s.secondLevel}
                 onClick={() => openSecondLevel(m._id.secondCategory)}
+                aria-expanded={m.isOpened}
               >
                 {m._id.secondCategory}
-              </div>
+              </button>
 
               <motion.div
                 layout
                 variants={variantsParent}
                 initial={m.isOpened ? "visible" : "hidden"}
                 animate={m.isOpened ? "visible" : "hidden"}
-                className={cn(s.secondLevelBlock, {
-                  // [s.secondLevelBlockOpened]: m.isOpened,
-                })}
+                className={s.secondLevelBlock}
               >
                 {buildThirdLevel(m.pages, menuItem.route, m.isOpened ?? false)}
               </motion.div>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     );
   };
 
@@ -129,6 +134,7 @@ export function Menu() {
           className={cn(s.thirdLevel, {
             [s.thirdLevelActive]: `/${route}/${p.alias}` === pathName,
           })}
+          aria-current={`/${route}/${p.alias}` === pathName ? "page" : false}
         >
           {p.category}
         </Link>
@@ -136,5 +142,14 @@ export function Menu() {
     ));
   };
 
-  return <div className={s.menu}>{buildFirstLevel()}</div>;
+  return (
+    <nav role="navigation" className={s.menu}>
+      {announce && (
+        <span className="visualy-hidden">
+          {announce === "opened" ? "expended" : "closed"}
+        </span>
+      )}
+      {buildFirstLevel()}
+    </nav>
+  );
 }
