@@ -9,6 +9,7 @@ import { Up } from "./components";
 import s from "./layout.module.css";
 import cn from "classnames";
 import "./globals.css";
+import Head from "next/head";
 
 const inter = Noto_Sans_KR({
   subsets: ["latin"],
@@ -31,6 +32,10 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <body
         className={cn(inter.className, s.wrapper)}
         suppressHydrationWarning={true}

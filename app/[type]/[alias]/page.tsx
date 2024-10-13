@@ -7,15 +7,19 @@ import { firstLevelMenu } from "@/app/lib/helpers";
 
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Head from "next/head";
 
 interface TopPageParams {
   params: { alias: string; type: string };
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  // ...
+export async function generateMetadata({
+  params,
+}: TopPageParams): Promise<Metadata> {
+  const page = await getPage(params.alias);
+
   return {
-    title: "Page",
+    title: page?.metaTitle,
   };
 }
 
@@ -43,10 +47,18 @@ export default async function TopPage({ params }: TopPageParams) {
   }
 
   return (
-    <TopPageComponent
-      firstCategory={firstCategoryItem.id}
-      page={page}
-      products={products}
-    />
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name="description" content={page.metaDescription} />
+        <meta property="og:title" content={page.metaTitle} />
+        <meta property="og:description" content={page.metaDescription} />
+      </Head>
+      <TopPageComponent
+        firstCategory={firstCategoryItem.id}
+        page={page}
+        products={products}
+      />
+    </>
   );
 }
